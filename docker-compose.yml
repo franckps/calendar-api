@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    command: npm run start:dev
+    ports: 
+      - 3000:3000
+    networks:
+      - calendar-network
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: calendar_db
+    ports:
+      - 5432:5432
+    networks:
+      - calendar-network
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - calendar-network
+    depends_on:
+      - db
+networks:
+  calendar-network:
+
