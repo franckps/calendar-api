@@ -1,0 +1,14 @@
+GET http://localhost:3000/events
+
+###
+
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+    "title": "Event 1",
+    "description": "My first event",
+    "date": "2021-12-24",
+    "start_time": 540,
+    "end_time": 630
+}
