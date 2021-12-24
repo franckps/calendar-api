@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 @Entity()
 export class Calendar {
     @PrimaryColumn('uuid')
-    id: number;
+    id: string;
 
     @Column({length: 200})
     title: string;
@@ -15,10 +15,10 @@ export class Calendar {
     date: string;
 
     @Column('time')
-    start_date: string;
+    start_time: string;
 
     @Column('time')
-    end_date: string;
+    end_time: string;
 
     @CreateDateColumn()
     created_at: string;
