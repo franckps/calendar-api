@@ -14,13 +14,13 @@ export class Calendar {
     @Column('date')
     date: string;
 
-    @Column('time')
-    start_time: string;
+    @Column()
+    start_time: number;
 
-    @Column('time')
-    end_time: string;
+    @Column()
+    end_time: number;
 
-    @CreateDateColumn()
+    @Column()
     created_at: string;
 
     @Column('boolean')
