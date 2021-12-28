@@ -38,6 +38,6 @@ export class CalendarService {
     }
 
     async findAll(): Promise<CalendarProtocol[]> {
-        return this.calendarRepository.find()
+        return this.calendarRepository.find({active: true})
     }
 }
