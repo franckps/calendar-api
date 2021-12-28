@@ -1,6 +1,9 @@
-export interface CreateCalendarProtocol {
+export interface UpdateCalendarProtocol {
     title: string;
     description: string;
+}
+
+export interface CreateCalendarProtocol extends UpdateCalendarProtocol {
     date: string;
     start_time: number;
     end_time: number;

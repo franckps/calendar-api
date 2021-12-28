@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Calendar } from '../entity/calendar.entity';
 import { Repository } from 'typeorm';
-import { CalendarProtocol, CreateCalendarProtocol } from 'src/protocols/calendar-protocols';
+import { CalendarProtocol, CreateCalendarProtocol, UpdateCalendarProtocol } from 'src/protocols/calendar-protocols';
 import { randomUUID } from 'crypto'
 
 @Injectable()
@@ -26,6 +26,15 @@ export class CalendarService {
 
         await this.calendarRepository.save(calendar)
         return { id, created_at, active, title, description, date, start_time, end_time }
+    }
+
+    async update(id: string, { title, description } : UpdateCalendarProtocol): Promise<void> {
+        const calendar = new Calendar()
+        calendar.title = title;
+        calendar.description = description;
+
+        await this.calendarRepository.update({ id }, calendar)
+        return;
     }
 
     async delete(id: string): Promise<void> {

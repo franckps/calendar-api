@@ -15,4 +15,14 @@ Content-Type: application/json
 
 ###
 
+PUT http://localhost:3000/events/5e18b61d-5ee3-4b20-a24c-5df1447d468b
+Content-Type: application/json
+
+{
+    "title": "Event 2",
+    "description": "My first event updated"
+}
+
+###
+
 DELETE http://localhost:3000/events/34c07bc6-bc99-41e9-8829-d3927b47b03a
