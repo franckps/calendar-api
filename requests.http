@@ -2,6 +2,10 @@ GET http://localhost:3000/events
 
 ###
 
+GET http://localhost:3000/events?startDate=2021-12-23&endDate=2021-12-25
+
+###
+
 POST http://localhost:3000/events
 Content-Type: application/json
 

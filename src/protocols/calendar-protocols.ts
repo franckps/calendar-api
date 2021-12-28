@@ -14,3 +14,8 @@ export interface CalendarProtocol extends CreateCalendarProtocol {
     created_at: string;
     active: boolean;
 }
+
+export interface FindCalendarProtocol {
+    startDate: string;
+    endDate: string;
+}

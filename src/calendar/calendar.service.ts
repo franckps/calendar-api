@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Calendar } from '../entity/calendar.entity';
-import { Repository } from 'typeorm';
-import { CalendarProtocol, CreateCalendarProtocol, UpdateCalendarProtocol } from 'src/protocols/calendar-protocols';
+import { Repository, Between } from 'typeorm';
+import { CalendarProtocol, CreateCalendarProtocol, FindCalendarProtocol, UpdateCalendarProtocol } from 'src/protocols/calendar-protocols';
 import { randomUUID } from 'crypto'
 
 @Injectable()
@@ -46,7 +46,11 @@ export class CalendarService {
         return;
     }
 
-    async findAll(): Promise<CalendarProtocol[]> {
-        return this.calendarRepository.find({active: true})
+    async find(payload?: FindCalendarProtocol): Promise<CalendarProtocol[]> {
+        const { startDate, endDate } = payload;
+        const criteria = { active: true } as {active: boolean, date?:  any}
+        if(!!startDate && !!endDate)
+            criteria.date = Between(startDate, endDate)
+        return this.calendarRepository.find(criteria)
     }
 }

@@ -1,13 +1,13 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
-import { CreateCalendarProtocol, UpdateCalendarProtocol } from 'src/protocols/calendar-protocols';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query } from '@nestjs/common';
+import { CreateCalendarProtocol, FindCalendarProtocol, UpdateCalendarProtocol } from 'src/protocols/calendar-protocols';
 import { CalendarService } from './calendar.service';
 @Controller('events')
 export class CalendarController {
   constructor(private readonly calendarService: CalendarService) {}
 
   @Get()
-  async findAll(): Promise<any> {
-    return this.calendarService.findAll();
+  async find(@Query() query: FindCalendarProtocol): Promise<any> {
+    return this.calendarService.find(query);
   }
   
   @Post()
