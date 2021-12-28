@@ -28,6 +28,15 @@ export class CalendarService {
         return { id, created_at, active, title, description, date, start_time, end_time }
     }
 
+    async delete(id: string): Promise<void> {
+        const active = false;
+        const calendar = new Calendar()
+        calendar.active = active;
+
+        await this.calendarRepository.update({ id }, calendar)
+        return;
+    }
+
     async findAll(): Promise<CalendarProtocol[]> {
         return this.calendarRepository.find()
     }

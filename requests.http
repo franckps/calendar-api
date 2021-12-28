@@ -12,3 +12,7 @@ Content-Type: application/json
     "start_time": 540,
     "end_time": 630
 }
+
+###
+
+DELETE http://localhost:3000/events/34c07bc6-bc99-41e9-8829-d3927b47b03a

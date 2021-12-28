@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { CreateCalendarProtocol } from 'src/protocols/calendar-protocols';
 import { CalendarService } from './calendar.service';
 @Controller('events')
@@ -12,7 +12,12 @@ export class CalendarController {
   
   @Post()
   async create(@Body() body: CreateCalendarProtocol): Promise<any> {
-    console.log('controller: ',{body})
     return this.calendarService.create(body);
+  }
+  
+  @Delete(':id')
+  @HttpCode(204)
+  async delete(@Param() { id }: {id: string}): Promise<any> {
+    return this.calendarService.delete(id);
   }
 }
