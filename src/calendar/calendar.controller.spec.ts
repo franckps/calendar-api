@@ -12,7 +12,9 @@ describe('CalendarController', () => {
     controller = module.get<CalendarController>(CalendarController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('root', () => {
+    it('should return "Hello World!"', () => {
+      expect(controller.find({ startDate: '2021-12-12', endDate: '2021-12-12' })).toBe('Hello World!');
+    });
   });
 });
